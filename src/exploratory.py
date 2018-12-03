@@ -19,6 +19,8 @@ print("\ntype\n", df["type"].value_counts())
 
 print("\n", df.loc[df['type'] == "nuclear explosion"])
 
-df.fault.astype(str).value_counts().plot("bar")
+df.fault_names.value_counts().plot("bar")
+plt.title("Histogram of quakes by fault lines")
 plt.savefig("../media/kmeans/hist_faults.png")
 plt.show()
+

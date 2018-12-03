@@ -13,7 +13,7 @@ def load_data(columns=["id", "latitude", "longitude", "fault", "time", "type"]):
     df = pd.read_csv("../data/tp2_data.csv")
     fault_names_df = pd.read_csv("../data/fault_names.csv",index_col="id")
     df = df[columns]
-    df["fault"] = df["fault"].apply(lambda faultId: fault_names_df.loc[faultId].values[0] if faultId != -1 else "unknown")
+    df["fault_names"] = df["fault"].apply(lambda faultId: fault_names_df.loc[faultId].values[0] if faultId != -1 else "unknown")
 
     df['x'], df['y'], df['z'] = zip(*df.apply(convert_coordinates, axis=1))
     df.time = pd.to_datetime(df.time, infer_datetime_format=True)
